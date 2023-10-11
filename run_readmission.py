@@ -34,7 +34,8 @@ from scipy import interp
 
 from sklearn.metrics import roc_auc_score, precision_recall_curve, roc_curve, auc, confusion_matrix, \
     classification_report
-from sklearn.utils.fixes import signature
+#from sklearn.utils.fixes import signature
+from funcsigs import signature
 import matplotlib.pyplot as plt
 
 import pandas as pd
@@ -48,6 +49,23 @@ from pytorch_pretrained_bert.tokenization import BertTokenizer
 from pytorch_pretrained_bert.optimization import BertAdam
 # important
 from modeling_readmission import BertForSequenceClassification
+
+
+"""
+python ./run_readmission.py \
+  --task_name readmission \
+  --do_train \
+  --do_eval \
+  --data_dir ./data/discharge \
+  --bert_model ../pretrained-models/RoBERTa-base-Mimic-half-1_epoch/roberta-base-custom/12-09-2023--15-28/checkpoint-10000 \
+  --max_seq_length 512 \
+  --train_batch_size 12 \
+  --learning_rate 2e-5 \
+  --num_train_epochs 1 \
+  --output_dir ./result/finetuned/ \
+  --no_cuda
+
+"""
 
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s -   %(message)s',
                     datefmt='%m/%d/%Y %H:%M:%S',
